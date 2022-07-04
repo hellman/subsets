@@ -100,7 +100,7 @@ d.LowerSet().get_unpacked()
 # ((0, 0, 0), (0, 0, 1), (0, 0, 2), (0, 0, 3), (1, 0, 0), (1, 0, 1), (1, 0, 2), (1, 0, 3))
 ```
 
-In addition, `DenseBox` can be converted to and from `DenseSet` with $n = d_1 + d_2 + ...$:
+In addition, `DenseBox` can be converted to and from `DenseSet` with $n = d_1 + d_2 + \ldots$:
 the first produces set of bitstrings that have weight pattern $(\ell_1, \ell_2, \ldots)$ for each such pattern in the given `DenseBox` (expansion);
 the second produces all weight patterns in a given `DenseSet` (compression):
 
