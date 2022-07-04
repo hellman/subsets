@@ -73,7 +73,9 @@ list(DenseSet(3, [0, 1, 2]).Not(3))  # equiv. to xor 3 each index set
 
 ### DenseBox
 
-`DenseBox` stores a subset of a set $\{0,\ldots,d_1\} \times \{0,\ldots,d_2\} \times \ldots$ as a bitstring of length $(d_1 + 1) \cdot (d_2 + 1) \cdot \ldots$. It supports multidimensional transforsms similar to `DenseSet`.
+`DenseBox` stores a subset of a set $\\{0,\ldots,d_1\\} \times \\{0,\ldots,d_2\\} \times \ldots $
+as a bitstring of length $ (d_1 + 1) \cdot (d_2 + 1) \cdot \ldots$.
+It supports multidimensional transforsms similar to `DenseSet`.
 
 Each element is addressed either by a list of integers from $\{0,\ldots,d_1\} \times \{0,\ldots,d_2\} \times \ldots$, or by a packed 64-bit integer.
 
@@ -99,7 +101,7 @@ d.LowerSet().get_unpacked()
 ```
 
 In addition, `DenseBox` can be converted to and from `DenseSet` with $n = d_1 + d_2 + ...$:
-the first produces set of bitstrings that have weight pattern $(\ell_1, \ell_2, ...)$ for each such pattern in the given `DenseBox` (expansion);
+the first produces set of bitstrings that have weight pattern $(\ell_1, \ell_2, \ldots)$ for each such pattern in the given `DenseBox` (expansion);
 the second produces all weight patterns in a given `DenseSet` (compression):
 
 ```python
