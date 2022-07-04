@@ -2,9 +2,9 @@
 
 This package provides C++ implementation and Python bindings (SWIG) for dense binary/box multidimensional transformations.
 
-Example of such transform is the TruthTable-to-AlgebraicNormalForm conversion (the Möbius transform), TruthTable-to-ParitySet conversion, Lower/UpperClosure with respect to the product partial order, etc. For more details, see Section 5 of ???
+Example of such transform is the TruthTable-to-AlgebraicNormalForm conversion (the Möbius transform), TruthTable-to-ParitySet conversion, Lower/UpperClosure with respect to the product partial order, etc. For more details, see Section 5 of the [Convexity of division property transitions](https://eprint.iacr.org/2021/1285) paper ([ASIACRYPT 2021](https://link.springer.com/chapter/10.1007/978-3-030-92062-3_12)).
 
-Box here means a set of the shape `{0,...d_1} × {0,...d_2} x ...`.
+Box here means a set of the shape $\{0,\ldots,d_1\} \times \{0,\ldots,d_2\} \times \ldots$.
 
 
 ## Installation
@@ -27,7 +27,7 @@ See also [tests](tests/) for more examples.
 
 ### DenseSet
 
-`DenseSet` stores a subset of n-bit vectors as a bitstring of 2^n bits. 
+`DenseSet` stores a subset of $n$-bit vectors as a bitstring of $2^n$ bits. 
 
 ```python
 from subsets import DenseSet
@@ -73,9 +73,9 @@ list(DenseSet(3, [0, 1, 2]).Not(3))  # equiv. to xor 3 each index set
 
 ### DenseBox
 
-`DenseBox` stores a subset of a set `{0,...d_1} × {0,...d_2} × ...` as a bitstring of length `(d_1 + 1) × (d_2 + 1) × ...`. It supports multidimensional transforsms similar to `DenseSet`.
+`DenseBox` stores a subset of a set $\{0,\ldots,d_1\} \times \{0,\ldots,d_2\} \times \ldots$ as a bitstring of length $(d_1 + 1) \cdot (d_2 + 1) \cdot \ldots$. It supports multidimensional transforsms similar to `DenseSet`.
 
-Each element is addressed either by a list of integers from `{0,...d_1} × {0,...d_2} × ...`, or by a packed 64-bit integer.
+Each element is addressed either by a list of integers from $\{0,\ldots,d_1\} \times \{0,\ldots,d_2\} \times \ldots$, or by a packed 64-bit integer.
 
 ```python
 from subsets import DenseBox
@@ -98,8 +98,8 @@ d.LowerSet().get_unpacked()
 # ((0, 0, 0), (0, 0, 1), (0, 0, 2), (0, 0, 3), (1, 0, 0), (1, 0, 1), (1, 0, 2), (1, 0, 3))
 ```
 
-In addition, `DenseBox` can be converted to and from `DenseSet` with `n = d_1 + d_2 + ...`:
-the first produces set of bitstrings that have weight pattern `(l_1, l_2, ...)` for each such pattern in the given `DenseBox` (expansion);
+In addition, `DenseBox` can be converted to and from `DenseSet` with $n = d_1 + d_2 + ...$:
+the first produces set of bitstrings that have weight pattern $(\ell_1, \ell_2, ...)$ for each such pattern in the given `DenseBox` (expansion);
 the second produces all weight patterns in a given `DenseSet` (compression):
 
 ```python
@@ -136,7 +136,7 @@ db == db.LowerSet() & db.UpperSet()
 
 ### Division Property Propagation Table
 
-Basic implementation of the (reduced) DPPT computation algorithm (Section 5 of ???).
+Basic implementation of the (reduced) DPPT computation algorithm (Section 5 of [ia.cr/2021/1285](https://ia.cr/2021/1285)).
 
 ```python
 from subsets import DenseSet
