@@ -4,7 +4,7 @@ This package provides C++ implementation and Python bindings (SWIG) for dense bi
 
 Example of such transform is the TruthTable-to-AlgebraicNormalForm conversion (the Möbius transform), TruthTable-to-ParitySet conversion, Lower/UpperClosure with respect to the product partial order, etc. For more details, see Section 5 of the [Convexity of division property transitions](https://eprint.iacr.org/2021/1285) paper ([ASIACRYPT 2021](https://link.springer.com/chapter/10.1007/978-3-030-92062-3_12)).
 
-Box here means a set of the shape $\\{0,\ldots,d_1\\} \times \{0,\ldots,d_2\} \times \ldots$.
+Box here means a set of the shape $\\{0,\ldots,d_1\\} \times \\{0,\ldots,d_2\\} \times \ldots$.
 
 
 ## Installation
