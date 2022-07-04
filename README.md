@@ -244,3 +244,6 @@ INFO:subsets.setinfo:8 7 : 5
 INFO:subsets.setinfo:8 8 : 1
 INFO:subsets.setinfo:
 ```
+
+
+## License: MIT
