@@ -4,6 +4,8 @@ from binteger import Bin
 
 from subsets import DenseSet, DenseBox, DenseTernary
 from subsets.misc import Quine_McCluskey_Step1
+from subsets.misc import Quine_McCluskey_Step1_Dense2
+from subsets.misc import Quine_McCluskey_Step1_Dense3
 
 
 def test_QMC1():
@@ -40,6 +42,9 @@ def test_QMC1_random():
                 P.set(x)
 
         S = Quine_McCluskey_Step1(P)
+        S2 = Quine_McCluskey_Step1_Dense2(P)
+        S3 = Quine_McCluskey_Step1_Dense3(P)
+        assert set(S) == set(S2) == set(S3)
 
         Sa = {}
         for a, u in S:
