@@ -27,8 +27,15 @@ def Quine_McCluskey_Step1_Dense2(P: DenseSet, n=None):
     Complexity: n 2^n |P|
     """
     if n is None:
-        assert isinstance(P, DenseSet), "n must be given or P must be a DenseSet"
-        n = P.n
+        for v in P:
+            n = len(v)
+            break
+        else:
+            assert isinstance(P, DenseSet), "n must be given or P must be a DenseSet"
+            n = P.n
+
+    if not isinstance(P, DenseSet):
+        P = DenseSet(n, list(P))
 
     S = []
     for a in P:
@@ -54,10 +61,16 @@ def Quine_McCluskey_Step1_Dense3(P: DenseSet, n=None):
     Complexity: n 3^n
     """
     if n is None:
-        assert isinstance(P, DenseSet), "n must be given or P must be a DenseSet"
-        n = P.n
-    else:
-        P = DenseSet(P, n)
+        for v in P:
+
+            n = len(v)
+            break
+        else:
+            assert isinstance(P, DenseSet), "n must be given or P must be a DenseSet"
+            n = P.n
+
+    if not isinstance(P, DenseSet):
+        P = DenseSet(n, [Bin(v, n).int for v in P])
 
     ter = DenseTernary(P)
 
