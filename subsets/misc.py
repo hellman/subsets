@@ -35,7 +35,7 @@ def Quine_McCluskey_Step1_Dense2(P: DenseSet, n=None):
             n = P.n
 
     if not isinstance(P, DenseSet):
-        P = DenseSet(n, list(P))
+        P = DenseSet(n, [Bin(v, n).int for v in P])
 
     S = []
     for a in P:
