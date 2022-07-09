@@ -59,3 +59,7 @@ def tool_setinfo():
             print(*s)
 
         log.info("")
+
+
+if __name__ == '__main__':
+    tool_setinfo()
