@@ -69,7 +69,7 @@ void DenseTernary::do_Sweep_QmC_AND_up_OR(uint64_t mask) {
 void DenseTernary::do_Sweep_QmC_NOTAND_down(uint64_t mask) {
     do_Sweep<QmC_NOTAND_down<BITSET3>>(mask);
 }
-void DenseTernary::do_QuineMcCluskey(uint64_t mask) {
+void DenseTernary::do_MaxCubes(uint64_t mask) {
     do_Sweep_QmC_AND_up_OR(mask);
     do_Sweep_QmC_NOTAND_down(mask);
 }

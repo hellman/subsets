@@ -1,4 +1,8 @@
 """
+Covering a Boolean set by maximal cubes (patterns with 0,1,*).
+
+A variation of the first step of the Quine-McCluskey algorithm for Boolean minimization.
+
 See https://doi.org/10.13154/tosc.v2020.i3.327-361 .
 Reformulation of Quine-McCluskey algorithm in two parts:
 
@@ -20,22 +24,29 @@ from binteger import Bin
 from subsets import DenseSet, DenseTernary
 
 
-def Quine_McCluskey_Step1_Dense2(P: DenseSet, n=None):
+def _prepare_args(P: DenseSet, n=None):
+    if n is None:
+        if isinstance(P, DenseSet):
+            n = P.n
+        else:
+            for v in P:
+                n = len(v)
+                break
+            else:
+                assert isinstance(P, DenseSet), "n must be given or P must be a DenseSet"
+
+    if not isinstance(P, DenseSet):
+        P = DenseSet(n, [Bin(v, n).int for v in P])
+
+    return P, n
+
+def CubeCover_Dense2(P: DenseSet, n=None):
     """
     This method does part 1 in the framework of dense BINARY sets.
 
     Complexity: n 2^n |P|
     """
-    if n is None:
-        for v in P:
-            n = len(v)
-            break
-        else:
-            assert isinstance(P, DenseSet), "n must be given or P must be a DenseSet"
-            n = P.n
-
-    if not isinstance(P, DenseSet):
-        P = DenseSet(n, [Bin(v, n).int for v in P])
+    P, n = _prepare_args(P, n)
 
     S = []
     for a in P:
@@ -54,30 +65,20 @@ def Quine_McCluskey_Step1_Dense2(P: DenseSet, n=None):
     return S
 
 
-def Quine_McCluskey_Step1_Dense3(P: DenseSet, n=None):
+def CubeCover_Dense3(P: DenseSet, n=None):
     """
     This method does part 1 in the framework of dense TERNARY sets (0/1/*).
 
     Complexity: n 3^n
     """
-    if n is None:
-        for v in P:
-
-            n = len(v)
-            break
-        else:
-            assert isinstance(P, DenseSet), "n must be given or P must be a DenseSet"
-            n = P.n
-
-    if not isinstance(P, DenseSet):
-        P = DenseSet(n, [Bin(v, n).int for v in P])
+    P, n = _prepare_args(P, n)
 
     ter = DenseTernary(P)
 
     # does:
     # do_Sweep_QmC_AND_up_OR(mask) : c |= a & b
     # do_Sweep_QmC_NOTAND_down(mask) : a &= ~c; b &= ~c
-    ter.do_QuineMcCluskey()
+    ter.do_MaxCubes()
 
     S = []
     for v in ter:
@@ -93,4 +94,5 @@ def Quine_McCluskey_Step1_Dense3(P: DenseSet, n=None):
     return S
 
 
-Quine_McCluskey_Step1 = Quine_McCluskey_Step1_Dense2
+
+CubeCover = CubeCover_Dense3

@@ -48,7 +48,7 @@ struct DenseTernary {
 
     void do_Sweep_QmC_AND_up_OR(uint64_t mask = -1ull);
     void do_Sweep_QmC_NOTAND_down(uint64_t mask = -1ull);
-    void do_QuineMcCluskey(uint64_t mask = -1ull);
+    void do_MaxCubes(uint64_t mask = -1ull);
 
     void iter_support(std::function<void(uint64_t x)> const & func) const;
 

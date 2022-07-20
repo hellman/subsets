@@ -28,7 +28,6 @@ const BITSET3 MASKS_TERNARY[6] = {
 };
 
 static inline uint64_t bin2ter(uint64_t x, int n) {
-    uint64_t p3 = 1;
     uint64_t ret = 0;
     fori(i, n) {
         ret = ret * 3 + ((x >> (n - 1 - i)) & 1);

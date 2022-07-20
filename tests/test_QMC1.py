@@ -3,9 +3,9 @@ from collections import Counter
 from binteger import Bin
 
 from subsets import DenseSet, DenseBox, DenseTernary
-from subsets.misc import Quine_McCluskey_Step1
-from subsets.misc import Quine_McCluskey_Step1_Dense2
-from subsets.misc import Quine_McCluskey_Step1_Dense3
+from subsets.cube_cover import CubeCover
+from subsets.cube_cover import CubeCover_Dense2
+from subsets.cube_cover import CubeCover_Dense3
 
 
 def test_QMC1():
@@ -16,7 +16,7 @@ def test_QMC1():
             P.set(randrange(2**n))
 
             if i < 10 or i % 10 == 0:
-                S = Quine_McCluskey_Step1(P)
+                S = CubeCover(P)
 
                 Sa = {}
                 for a, u in S:
@@ -41,9 +41,9 @@ def test_QMC1_random():
             if randrange(2):
                 P.set(x)
 
-        S = Quine_McCluskey_Step1(P)
-        S2 = Quine_McCluskey_Step1_Dense2(P)
-        S3 = Quine_McCluskey_Step1_Dense3(P)
+        S = CubeCover(P)
+        S2 = CubeCover_Dense2(P)
+        S3 = CubeCover_Dense3(P)
         assert set(S) == set(S2) == set(S3)
 
         Sa = {}
@@ -80,7 +80,7 @@ def test_implementations():
 
             # Semi-dense QmC through binary dense sets
             pats = set()
-            for a, u in Quine_McCluskey_Step1(db):
+            for a, u in CubeCover(db):
                 a = Bin(a, n)
                 u = Bin(u, n)
                 pat = ""
@@ -111,7 +111,7 @@ def test_implementations():
 
             # Dense through optimized DenseTernary
             ter = DenseTernary(db)
-            ter.do_QuineMcCluskey()
+            ter.do_MaxCubes()
 
             pats3 = set()
             for v in ter:
@@ -184,7 +184,7 @@ def time_imp_diff():
         print("ddt      ", ddt)
         ddt.do_Complement()
         print("ddt compl", ddt)
-        S = Quine_McCluskey_Step1(ddt)
+        S = CubeCover(ddt)
 
         ans = 0
         for a, u in S:
