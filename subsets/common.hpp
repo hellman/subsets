@@ -1,6 +1,6 @@
 #pragma once
 
-#include "hackycpp.h"
+#include "hackycpp.hpp"
 
 static inline int hw(u64 x) {
     return __builtin_popcountll(x);

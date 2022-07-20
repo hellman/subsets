@@ -6,7 +6,7 @@
 %}
 #endif
 
-#include "hackycpp.h" // for types
+#include "hackycpp.hpp" // for types
 
 #include <functional>
 

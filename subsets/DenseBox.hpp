@@ -2,7 +2,7 @@
 
 #include <functional>
 
-#include "hackycpp.h"
+#include "hackycpp.hpp"
 
 #include "BitSet.hpp"
 #include "DenseSet.hpp"

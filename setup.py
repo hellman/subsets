@@ -42,7 +42,7 @@ ext_modules = [
         ],
         depends=[
             "./subsets/common.hpp",
-            "./subsets/hackycpp.h",
+            "./subsets/hackycpp.hpp",
 
             "./subsets/Sweep.hpp",
             "./subsets/BitSet.hpp",
@@ -78,7 +78,7 @@ setup(
         "subsets", "binary",
         "multidimensional transforms", "cryptanalysis", "cryptography",
     ],
-    project_urls={"Source": "https://github.com/CryptoExperts/AC21-DivProp-Convexity"},
+    project_urls={"Source": "https://github.com/hellman/subsets"},
 
     python_requires='>=3.7,<4.0',
     install_requires=install_requires,
