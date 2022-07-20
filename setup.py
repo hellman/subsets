@@ -42,7 +42,7 @@ ext_modules = [
         ],
         depends=[
             "./subsets/common.hpp",
-            "./subsets/hackycpp.hpp",
+            "./subsets/hackycpp.h",
 
             "./subsets/Sweep.hpp",
             "./subsets/BitSet.hpp",
