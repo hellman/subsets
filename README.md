@@ -10,8 +10,7 @@ Box here means a set of the shape $\\{0,\ldots,d_1\\} \times \\{0,\ldots,d_2\\} 
 ## Installation
 
 ```bash
-apt install swig  # or any other package manager
-pip install hackycpp
+apt install swig g++ python3-dev # or any other package manager
 pip install subsets
 ```
 
@@ -207,6 +206,8 @@ dppt.do_Not(0xff00)
 ### Extra
 
 Subsets can be stored to / loaded from files, and a command line tool to view information on such files is provided:
+
+*note*: actually sparse DenseSet instances are stored sparsely in files (but densely in memory)
 
 ```bash
 $ subsets.info -s data/sbox_aes/ddt.set

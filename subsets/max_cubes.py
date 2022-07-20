@@ -1,5 +1,5 @@
 """
-Covering a Boolean set by maximal cubes (patterns with 0,1,*).
+Find all maximal cubes (patterns with 0,1,*) in a Boolean set.
 
 A variation of the first step of the Quine-McCluskey algorithm for Boolean minimization.
 
@@ -40,7 +40,7 @@ def _prepare_args(P: DenseSet, n=None):
 
     return P, n
 
-def CubeCover_Dense2(P: DenseSet, n=None):
+def MaxCubes_Dense2(P: DenseSet, n=None):
     """
     This method does part 1 in the framework of dense BINARY sets.
 
@@ -65,7 +65,7 @@ def CubeCover_Dense2(P: DenseSet, n=None):
     return S
 
 
-def CubeCover_Dense3(P: DenseSet, n=None):
+def MaxCubes_Dense3(P: DenseSet, n=None):
     """
     This method does part 1 in the framework of dense TERNARY sets (0/1/*).
 
@@ -95,4 +95,4 @@ def CubeCover_Dense3(P: DenseSet, n=None):
 
 
 
-CubeCover = CubeCover_Dense3
+MaxCubes = MaxCubes_Dense3

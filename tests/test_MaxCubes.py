@@ -3,9 +3,9 @@ from collections import Counter
 from binteger import Bin
 
 from subsets import DenseSet, DenseBox, DenseTernary
-from subsets.cube_cover import CubeCover
-from subsets.cube_cover import CubeCover_Dense2
-from subsets.cube_cover import CubeCover_Dense3
+from subsets.max_cubes import MaxCubes
+from subsets.max_cubes import MaxCubes_Dense2
+from subsets.max_cubes import MaxCubes_Dense3
 
 
 def test_QMC1():
@@ -16,7 +16,7 @@ def test_QMC1():
             P.set(randrange(2**n))
 
             if i < 10 or i % 10 == 0:
-                S = CubeCover(P)
+                S = MaxCubes(P)
 
                 Sa = {}
                 for a, u in S:
@@ -41,9 +41,9 @@ def test_QMC1_random():
             if randrange(2):
                 P.set(x)
 
-        S = CubeCover(P)
-        S2 = CubeCover_Dense2(P)
-        S3 = CubeCover_Dense3(P)
+        S = MaxCubes(P)
+        S2 = MaxCubes_Dense2(P)
+        S3 = MaxCubes_Dense3(P)
         assert set(S) == set(S2) == set(S3)
 
         Sa = {}
@@ -80,7 +80,7 @@ def test_implementations():
 
             # Semi-dense QmC through binary dense sets
             pats = set()
-            for a, u in CubeCover(db):
+            for a, u in MaxCubes(db):
                 a = Bin(a, n)
                 u = Bin(u, n)
                 pat = ""
@@ -184,7 +184,7 @@ def time_imp_diff():
         print("ddt      ", ddt)
         ddt.do_Complement()
         print("ddt compl", ddt)
-        S = CubeCover(ddt)
+        S = MaxCubes(ddt)
 
         ans = 0
         for a, u in S:
