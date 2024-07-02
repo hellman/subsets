@@ -12,4 +12,9 @@ clean:
 	rm -f subsets/_subsets.*.so
 	rm -f subsets/*_wrap.cpp*
 	rm -f subsets/subsets.py
-	rm -rf build/
+	rm -rf build/ dist/
+
+upload:
+	python setup.py build -f
+	python setup.py sdist
+	twine upload --repository subsets  dist/subsets-*.tar.gz
