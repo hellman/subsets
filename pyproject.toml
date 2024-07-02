@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=64", "swig", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+
+[project]
+name = "subsets"
+dynamic = ["version"]
+dependencies = [
+  "binteger>=0.8.0",
+]
+requires-python = ">=3.7"
+authors = [
+  {name = "Aleksei Udovenko", email = "aleksei@affine.group"}
+]
+description = "Tools for cryptanalysis (subsets & transforms)"
+readme = "README.md"
+license = {text = "MIT License"}
+keywords = ["subsets", "binary", "ternary", "multidimensional transforms", "cryptanalysis", "cryptography"]
+        
+[project.urls]
+# Homepage = "https://example.com"
+#Documentation = "https://readthedocs.org"
+Repository = "https://github.com/hellman/subsets"
+
+[project.scripts]
+"subsets.info" = "subsets.tools:tool_setinfo"
