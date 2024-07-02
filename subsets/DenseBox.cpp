@@ -151,7 +151,7 @@ std::string DenseBox::info() const {
     );
     return string(buf);
 }
-void DenseBox::print() const {
+void DenseBox::_print() const {
     fori(x, fullsize) {
         if (data.get(x)) {
             printf("x %016lx (", x);

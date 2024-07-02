@@ -39,7 +39,7 @@ struct DenseBox {
     static DenseBox load_from_file(FILE *fd);
 
     std::string info() const;
-    void print() const;
+    void _print() const;
     uint64_t get_hash() const;
 
     // ========================================
