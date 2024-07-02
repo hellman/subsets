@@ -54,6 +54,7 @@ ext_modules = [
             "./subsets/DenseTernary.hpp",
         ],
         extra_compile_args=["-std=c++2a", "-O3"],
+        extra_link_args=["-Wl,-soname,python_subsets.so"],
     ),
 ]
 
