@@ -1,4 +1,7 @@
-#pragma once
+// this file should not be included in a header (to be exported)
+// only for local (static) usage
+#ifndef __HACKYCPP
+#define __HACKYCPP 1
 
 #include <string>
 #include <vector>
@@ -16,16 +19,6 @@
 #include <stdint.h>
 
 using namespace std;
-
-typedef uint64_t u64;
-typedef uint32_t u32;
-typedef uint16_t u16;
-typedef uint8_t u8;
-
-typedef int64_t i64;
-typedef int32_t i32;
-typedef int16_t i16;
-typedef int8_t i8;
 
 #define TTi template<typename T> inline
 
@@ -59,7 +52,7 @@ typedef int8_t i8;
 #define ensure2(cond, err) _ensure(cond, __FILE__, __LINE__, __PRETTY_FUNCTION__, #cond, err)
 #define ensure(...) GET_MACRO2(__VA_ARGS__, ensure2, ensure1)(__VA_ARGS__)
 
-TTi void _ensure(T cond, const char *file, int lno, const char *func, const char *condstr, const char * err) {
+TTi static void _ensure(T cond, const char *file, int lno, const char *func, const char *condstr, const char * err) {
     if (!cond) {
         string res;
         res = res + err + " (at " + file + ":" + to_string(lno) + ":" + func + " " + ", expression: " + condstr + " )";
@@ -67,3 +60,5 @@ TTi void _ensure(T cond, const char *file, int lno, const char *func, const char
     }
     assert(cond);  // for compiler hints
 }
+
+#endif

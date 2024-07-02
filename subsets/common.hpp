@@ -2,11 +2,11 @@
 
 #include "hackycpp.hpp"
 
-static inline int hw(u64 x) {
+static inline int hw(uint64_t x) {
     return __builtin_popcountll(x);
 }
 
-static inline int log2(u64 n) {
+static inline int log2(uint64_t n) {
     ensure((n & (n - 1)) == 0);
     ensure(n != 0);
     int ret = __builtin_ctzll(n);
@@ -14,7 +14,7 @@ static inline int log2(u64 n) {
     return ret;
 }
 
-static inline int log3(u64 n) {
+static inline int log3(uint64_t n) {
     ensure(n != 0);
     int ret = 0;
     while (n > 1) {

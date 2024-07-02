@@ -2,8 +2,6 @@
 
 #include <functional>
 
-#include "hackycpp.hpp"
-
 #include "BitSet.hpp"
 #include "DenseSet.hpp"
 
@@ -121,7 +119,7 @@ struct DenseBox {
             fori(x, fullsize) {
                 uint64_t val = (x / div) % dim;
                 if (val == 0) {
-                    std::vector<u8> bits(dim);
+                    std::vector<uint8_t> bits(dim);
                     fori(j, dim) {
                         bits[j] = data.get(x + j * div);
                     }
@@ -136,17 +134,17 @@ struct DenseBox {
     }
     #endif
 
-    static inline void OR_up(vector<u8> &cut) {
+    static inline void OR_up(vector<uint8_t> &cut) {
         fori(i, 1, cut.size()) {
             cut[i] |= cut[i-1];
         }
     }
-    static inline void OR_down(vector<u8> &cut) {
+    static inline void OR_down(vector<uint8_t> &cut) {
         rfori(i, cut.size()-1) {
             cut[i] |= cut[i+1];
         }
     }
-    static inline void MAX(vector<u8> &cut) {
+    static inline void MAX(vector<uint8_t> &cut) {
         rfori(i, cut.size()) {
             if (cut[i]) {
                 fori(j, i) {
@@ -156,7 +154,7 @@ struct DenseBox {
             }
         }
     }
-    static inline void MIN(vector<u8> &cut) {
+    static inline void MIN(vector<uint8_t> &cut) {
         fori(i, cut.size()) {
             if (cut[i]) {
                 fori(j, i + 1, cut.size()) {
@@ -166,16 +164,16 @@ struct DenseBox {
             }
         }
     }
-    static inline void REV(vector<u8> &cut) {
+    static inline void REV(vector<uint8_t> &cut) {
         reverse(cut.begin(), cut.end());
     }
 
     // for dense Quine-McCluskey
-    static inline void AND_up_OR(vector<u8> &cut) {
+    static inline void AND_up_OR(vector<uint8_t> &cut) {
         assert(cut.size() == 3);
         cut[2] |= cut[0] & cut[1];
     }
-    static inline void NOTAND_down(vector<u8> &cut) {
+    static inline void NOTAND_down(vector<uint8_t> &cut) {
         assert(cut.size() == 3);
         cut[0] &= ~cut[2];
         cut[1] &= ~cut[2];

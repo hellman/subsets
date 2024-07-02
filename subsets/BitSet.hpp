@@ -6,9 +6,8 @@
 %}
 #endif
 
-#include "hackycpp.hpp" // for types
-
 #include <functional>
+using namespace std;
 
 namespace Pack64 {
     inline uint64_t HI(uint64_t x) {

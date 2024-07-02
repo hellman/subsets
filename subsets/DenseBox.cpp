@@ -5,8 +5,7 @@
 
 #include "DenseBox.hpp"
 
-TTi
-static T vector_sum(const vector<T> & vec) {
+TTi static T vector_sum(const vector<T> & vec) {
     T s = 0;
     for (auto &v: vec) {
         s += v;
@@ -167,17 +166,17 @@ void DenseBox::print() const {
 // ========================================
 // Single bit get/set
 // ========================================
-std::vector<u64> DenseBox::unpack(u64 x) const {
-    vector<u64> xs(n);
+std::vector<uint64_t> DenseBox::unpack(uint64_t x) const {
+    vector<uint64_t> xs(n);
     rfori(i, n) {
         xs[i] = x % (dimensions[i] + 1);
         x /= (dimensions[i] + 1);
     }
     return xs;
 }
-u64 DenseBox::pack(const std::vector<u64> & xs) const {
+uint64_t DenseBox::pack(const std::vector<uint64_t> & xs) const {
     ensure(xs.size() == (size_t)n);
-    u64 x = 0;
+    uint64_t x = 0;
     fori(i, n) {
         x *= (dimensions[i] + 1);
         ensure(xs[i] <= dimensions[i]);
@@ -190,18 +189,18 @@ uint64_t DenseBox::project(uint64_t x) const {
     return DenseBox::_project(x, dimensions);
 }
 
-std::vector<u64> DenseBox::_unpack(u64 x, const std::vector<uint64_t> & dimensions) {
+std::vector<uint64_t> DenseBox::_unpack(uint64_t x, const std::vector<uint64_t> & dimensions) {
     uint64_t n = dimensions.size();
-    vector<u64> xs(n);
+    vector<uint64_t> xs(n);
     rfori(i, n) {
         xs[i] = x % (dimensions[i] + 1);
         x /= (dimensions[i] + 1);
     }
     return xs;
 }
-u64 DenseBox::_pack(const std::vector<u64> & xs, const std::vector<uint64_t> & dimensions) {
+uint64_t DenseBox::_pack(const std::vector<uint64_t> & xs, const std::vector<uint64_t> & dimensions) {
     uint64_t n = dimensions.size();
-    u64 x = 0;
+    uint64_t x = 0;
     fori(i, n) {
         x *= (dimensions[i] + 1);
         ensure(xs[i] <= dimensions[i]);
@@ -222,16 +221,16 @@ uint64_t DenseBox::_project(uint64_t x, const std::vector<uint64_t> & dimensions
     return DenseBox::_pack(xs, dimensions);
 }
 
-int DenseBox::get(u64 x) const {
+int DenseBox::get(uint64_t x) const {
     return data.get(x);
 }
-void DenseBox::set(u64 x) {
+void DenseBox::set(uint64_t x) {
     data.set(x);
 }
-void DenseBox::unset(u64 x) {
+void DenseBox::unset(uint64_t x) {
     data.unset(x);
 }
-void DenseBox::set(u64 x, u64 value) {
+void DenseBox::set(uint64_t x, uint64_t value) {
     data.set(x, value);
 }
 void DenseBox::add(uint64_t x) {
@@ -254,7 +253,7 @@ void DenseBox::set(const vector<uint64_t> & xs) {
 void DenseBox::unset(const vector<uint64_t> & xs) {
     data.unset(pack(xs));
 }
-void DenseBox::set(const vector<uint64_t> & xs, u64 value) {
+void DenseBox::set(const vector<uint64_t> & xs, uint64_t value) {
     data.set(pack(xs), value);
 }
 void DenseBox::add(const vector<uint64_t> & xs) {
@@ -272,7 +271,7 @@ void DenseBox::discard(const vector<uint64_t> & xs) {
 // ========================================
 // Support
 // ========================================
-void DenseBox::iter_support(function<void(u64 x)> const & func) const {
+void DenseBox::iter_support(function<void(uint64_t x)> const & func) const {
     data.iter_support(func);
 }
 
@@ -294,7 +293,7 @@ uint64_t DenseBox::get_weight() const {
     return data.get_weight();
 }
 std::vector<uint64_t> DenseBox::get_counts_by_weights() const {
-    u64 max_wt = vector_sum(dimensions);
+    uint64_t max_wt = vector_sum(dimensions);
     vector<uint64_t> res(max_wt + 1);
     auto func = [&] (uint64_t v) -> void {
         res[vector_sum(unpack(v))] += 1;
@@ -400,17 +399,17 @@ DenseBox DenseBox::operator~() const {
 // ========================================
 // template<auto func>
 // void do_Sweep(uint64_t mask) {
-//     u64 div = 1;
+//     uint64_t div = 1;
 //     fori(ni, n) {
 //         if ((mask & (1ull << ni)) == 0)
 //             continue;
 
 //         int i = n - 1 - ni;
-//         u64 dim = dimensions[i];
+//         uint64_t dim = dimensions[i];
 //         fori(x, fullsize) {
-//             u64 val = (x / div) % dim;
+//             uint64_t val = (x / div) % dim;
 //             if (val == 0) {
-//                 vector<u8> bits(dim);
+//                 vector<uint8_t> bits(dim);
 //                 fori(j, dim) {
 //                     bits[j] = data.get(x + j * div);
 //                 }
