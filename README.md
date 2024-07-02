@@ -6,6 +6,21 @@ Example of such transform is the TruthTable-to-AlgebraicNormalForm conversion (t
 
 Box here means a set of the shape $\\{0,\ldots,d_1\\} \times \\{0,\ldots,d_2\\} \times \ldots$.
 
+If you this library in your research, please cite
+
+```bib
+@inproceedings{AC:Udovenko21,
+  author       = {Aleksei Udovenko},
+  title        = {Convexity of Division Property Transitions: Theory, Algorithms and
+                  Compact Models},
+  booktitle    = {{ASIACRYPT} {(1)}},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {13090},
+  pages        = {332--361},
+  publisher    = {Springer},
+  year         = {2021}
+}
+```
 
 ## Installation
 
