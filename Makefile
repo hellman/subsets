@@ -15,6 +15,5 @@ clean:
 	rm -rf build/ dist/
 
 upload:
-	python setup.py build -f
-	python setup.py sdist
+	python -m build
 	twine upload --repository subsets  dist/subsets-*.tar.gz
